@@ -1,0 +1,24 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.4'
+
+services:
+  choice21apirest:
+    image: choice21apirest
+    build:
+      context: .
+      dockerfile: Choice21.API.Rest/Dockerfile
+    ports:
+      - 32750:80
+    depends_on: 
+      - "db"
+  db:
+    image: mysql:latest
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    ports: 
+      - 8083:3306
+    volumes:
+      - ./assets/database:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: pwd
+      MYSQL_DATABASE: mysql

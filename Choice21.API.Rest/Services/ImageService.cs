@@ -20,14 +20,16 @@ namespace Choice21.API.Rest.Services
 
         public IEnumerable<ImageData> GetImages()
         {
-            var result = baseSvc.ExecuteProcGet<ImageData>("STP_CHO2021_IMAGE_GET", null);
+            //var result = baseSvc.ExecuteProcGet<ImageData>("STP_CHO2021_IMAGE_GET", null);
+            var result = baseSvc.GetStuff<ImageData>("select * from cho2021_image");
 
             return result;
         }
-        
+
         public IEnumerable<ArcProfile> GetArcProfiles()
         {
-            var result = baseSvc.ExecuteProcGet<ArcProfile>("STP_CHO2021_ARCPROFILE_GET", null);
+            //var result = baseSvc.ExecuteProcGet<ArcProfile>("STP_CHO2021_ARCPROFILE_GET", null);
+            var result = baseSvc.GetStuff<ArcProfile>("select * from cho2021_arc_profile");
 
             return result;
         }
@@ -35,22 +37,24 @@ namespace Choice21.API.Rest.Services
         public void PostImage(ImageData model)
         {
             var param = PrepParamPost(model);
+            //var res = baseSvc.ExecuteProc("STP_CHO2021_IMAGE_INSERT", param);
 
-            var res = baseSvc.ExecuteProc("STP_CHO2021_IMAGE_INSERT", param);
+            var query = $"INSERT INTO develop2020.cho2021_image (ID_ARC_PROFILE, ID_ROOM_TYPE, BASE_IMAGE, NAME, COLOR_1, COLOR_2, DT_REGISTER) VALUES (@ArcProfile, @RoomType, @BaseImg, @Name, @Color1, @Color2, @DtRegister);";
+
+            var res = baseSvc.InsertStuff(query, param);
         }
 
         private Dictionary<string, object> PrepParamPost(ImageData model)
         {
             var param = new Dictionary<string, object>
             {
-                { "Pid", model.ID },
-                { "Pid_arcprofile", model.ID_ARC_PROFILE },
-                { "Pid_roomtype", model.ID_ROOM_TYPE},
-                { "Pbase_image", model.BASE_IMAGE},
-                { "Pname", model.NAME},
-                { "Pcolor1", model.COLOR_1 },
-                { "Pcolor2", model.COLOR_2 },
-                { "Pdt_register", model.ID == 0 ? DateTime.Now : model.DT_REGISTER }
+                { "@ArcProfile", model.ID_ARC_PROFILE },
+                { "@RoomType", model.ID_ROOM_TYPE},
+                { "@BaseImg", model.BASE_IMAGE},
+                { "@Name", model.NAME},
+                { "@Color1", model.COLOR_1 },
+                { "@Color2", model.COLOR_2 },
+                { "@DtRegister", model.ID == 0 ? DateTime.Now : model.DT_REGISTER }
             };
 
             return param;

@@ -23,6 +23,13 @@ namespace Choice21.API.Rest.Services
             return result;
         }
 
+        public dynamic InsertStuff(string query, Dictionary<string, object> param)
+        {
+            var conn = new ConnectionFactory(config);
+            var result = conn.ExecuteNonQuery(query, CommandType.Text, param);
+            return result;
+        }
+
         public IEnumerable<T> ExecuteProcGet<T>(string name, Dictionary<string, dynamic> param)
         {
             var conn = new ConnectionFactory(config);

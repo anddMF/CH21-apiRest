@@ -552,7 +552,7 @@ BEGIN
 		SELECT us.ID, us.ID_COMPANY, us.ID_USER_TYPE, us.NAME, us.EMAIL, us.PASSWORD, us.DT_BIRTH, us.DT_REGISTER, us.AVATAR
         FROM develop2020.cho2021_user us
         LEFT JOIN develop2020.cho2021_company co on us.ID_COMPANY = co.ID
-        WHERE ID = Pid;
+        WHERE us.ID = Pid;
 	END IF;
     
 	IF Pid = 0 && Pid_company > 0 THEN

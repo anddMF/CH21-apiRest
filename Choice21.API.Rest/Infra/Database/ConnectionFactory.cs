@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -105,7 +106,7 @@ namespace Choice21.API.Rest.Infra.Database
                     return true;
                 }
             }
-            catch
+            catch(Exception ex) // Only has the catch for debugging 
             {
                 return false;
             }

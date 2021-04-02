@@ -43,9 +43,9 @@ namespace Choice21.API.Rest.Controllers
             try
             {
                 var svc = new UserService(config);
-                var result = svc.PostUser(model);
+                svc.PostUser(model);
 
-                return Ok(result);
+                return Ok();
             }
             catch (Exception ex)
             {
@@ -59,9 +59,9 @@ namespace Choice21.API.Rest.Controllers
             try
             {
                 var svc = new UserService(config);
-                var result = svc.PostUser(model);
+                svc.PostUser(model);
 
-                return Ok(result);
+                return Ok();
             }
             catch (Exception ex)
             {

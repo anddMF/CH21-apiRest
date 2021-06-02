@@ -26,9 +26,9 @@ namespace Choice21.API.Rest.Controllers
         {
             try
             {
-                // var svc = new UserService(config);
-                // var result = svc.GetUser(id, id_company);
-                var result = Environment.GetEnvironmentVariable("Azuredb") == null ? "veio nada" : Environment.GetEnvironmentVariable("Azuredb");
+                var svc = new UserService(config);
+                var result = svc.GetUser(id, id_company);
+
                 return Ok(result);
             }
             catch (Exception ex)

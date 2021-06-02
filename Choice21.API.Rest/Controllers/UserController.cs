@@ -26,9 +26,9 @@ namespace Choice21.API.Rest.Controllers
         {
             try
             {
-                var svc = new UserService(config);
-                var result = svc.GetUser(id, id_company);
-
+                // var svc = new UserService(config);
+                // var result = svc.GetUser(id, id_company);
+                var result = Environment.GetEnvironmentVariable("SQLdb");
                 return Ok(result);
             }
             catch (Exception ex)

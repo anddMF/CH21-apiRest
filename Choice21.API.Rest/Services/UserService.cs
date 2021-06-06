@@ -22,7 +22,7 @@ namespace Choice21.API.Rest.Services
         {
             //var param = PrepParamGet(id, id_company);
             //var result = baseSvc.ExecuteProcGet<User>("STP_CHO2021_USER_GET", param);
-            string query = $"SELECT us.ID, us.ID_COMPANY, us.ID_USER_TYPE, us.NAME, us.EMAIL, us.PASSWORD, us.DT_BIRTH, us.DT_REGISTER, us.AVATAR FROM develop2020.cho2021_user us LEFT JOIN develop2020.cho2021_company co on us.ID_COMPANY = co.ID WHERE us.ID = {id};";
+            string query = $"SELECT us.ID, us.ID_COMPANY, us.ID_USER_TYPE, us.NAME, us.EMAIL, us.PASSWORD, us.DT_BIRTH, us.DT_REGISTER, us.AVATAR FROM develop2020.cho2021_user us LEFT JOIN develop2020.cho2021_company co on us.ID_COMPANY = co.ID WHERE us.ID_COMPANY = {id_company};";
             var result = baseSvc.GetStuff<User>(query);
 
             return result;

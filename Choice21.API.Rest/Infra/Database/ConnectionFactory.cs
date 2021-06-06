@@ -19,6 +19,8 @@ namespace Choice21.API.Rest.Infra.Database
         public ConnectionFactory(IConfiguration _config)
         {
             config = _config;
+            string azureConnString = Environment.GetEnvironmentVariable("SQLdb");
+            config["ConnectionStrings:SQLdb"] = azureConnString;
             connString = config.GetConnectionString("SQLdb");
         }
 

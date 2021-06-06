@@ -37,6 +37,23 @@ namespace Choice21.API.Rest.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("customer")]
+        public ActionResult<IEnumerable<Report>> GetCustomerReport(int id_company, int id_customer)
+        {
+            try
+            {
+                var svc = new ReportService(config);
+                var result = svc.GetReport(id_company, id_customer);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         public IActionResult PostReport(Report model)
         {

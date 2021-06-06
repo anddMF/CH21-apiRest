@@ -29,6 +29,14 @@ namespace Choice21.API.Rest.Services
             return result;
         }
 
+        public IEnumerable<Report> GetReport(int id_company, int id_customer)
+        {
+            string query = $"SELECT re.ID, re.ID_CUSTOMER, cu.NAME, cu.DT_BIRTH, cu.CHILDREN, cu.KID, cu.EMAIL, re.DT_REGISTER, re.DEAL, re.R_READ, re.TITLE, re.R_DESCRIPTION, re.R_KEY, re.R1_PIC1, re.R1_PIC2, re.R2_PIC1, re.R2_PIC2, re.R3_PIC1, re.R3_PIC2, re.R4_PIC1, re.R4_PIC2, re.R5_PIC1, re.R5_PIC2, re.R6_PIC1, re.R6_PIC2, re.R7_PIC1, re.R7_PIC2, re.R8_PIC1, re.R8_PIC2 FROM cho2021_report re LEFT JOIN cho2021_customer cu on re.ID_CUSTOMER = cu.ID WHERE re.ID_COMPANY = {id_company} AND re.ID_CUSTOMER = {id_customer};";
+            var result = baseSvc.GetStuff<Report>(query);
+
+            return result;
+        }
+
         public void PostReport(Report model)
         {
             var param = PrepParamPost(model);

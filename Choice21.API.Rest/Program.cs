@@ -19,6 +19,20 @@ namespace Choice21.API.Rest
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+            .UserPort()
+            .UseStartup<Startup>();
+    }
+
+    public static class WebHostBuilderExtensions
+    {
+        public static IWebHostBuilder UserPort(this IWebHostBuilder builder)
+        {
+            var port = Environment.GetEnvironmentVariable("PORT");
+            if (string.IsNullOrEmpty(port))
+            {
+                return builder;
+            }
+            return builder.UseUrls($"http://+:{port}");
+        }
     }
 }

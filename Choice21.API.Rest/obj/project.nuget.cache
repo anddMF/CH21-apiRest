@@ -1,9 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "wubducqWP2VBbX8N0rhdg1xJMtHCD2cnLjPxZZjjwBhW82rLKreJ9TZPzPnDMkquwxBBZR5heObYlBDBMfoxOA==",
+  "dgSpecHash": "WoNt4OEUuJSM8zXydRSi7VAx/OxbzwnbyiA74oYcuFEQ3ToTmU7onYG5Lr8rosXDj3qbGLACZe5U83Na1XI+kQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\andrew\\source\\repos\\Choice21.API.Rest\\Choice21.API.Rest\\Choice21.API.Rest.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\andrew\\.nuget\\packages\\amazon.lambda.apigatewayevents\\2.4.0\\amazon.lambda.apigatewayevents.2.4.0.nupkg.sha512",
+    "C:\\Users\\andrew\\.nuget\\packages\\amazon.lambda.applicationloadbalancerevents\\2.1.0\\amazon.lambda.applicationloadbalancerevents.2.1.0.nupkg.sha512",
+    "C:\\Users\\andrew\\.nuget\\packages\\amazon.lambda.aspnetcoreserver\\6.0.0\\amazon.lambda.aspnetcoreserver.6.0.0.nupkg.sha512",
+    "C:\\Users\\andrew\\.nuget\\packages\\amazon.lambda.core\\2.0.0\\amazon.lambda.core.2.0.0.nupkg.sha512",
+    "C:\\Users\\andrew\\.nuget\\packages\\amazon.lambda.logging.aspnetcore\\3.1.0\\amazon.lambda.logging.aspnetcore.3.1.0.nupkg.sha512",
+    "C:\\Users\\andrew\\.nuget\\packages\\amazon.lambda.serialization.json\\2.0.0\\amazon.lambda.serialization.json.2.0.0.nupkg.sha512",
     "C:\\Users\\andrew\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\andrew\\.nuget\\packages\\google.protobuf\\3.11.4\\google.protobuf.3.11.4.nupkg.sha512",
     "C:\\Users\\andrew\\.nuget\\packages\\k4os.compression.lz4\\1.1.11\\k4os.compression.lz4.1.1.11.nupkg.sha512",

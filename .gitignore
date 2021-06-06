@@ -20,7 +20,7 @@ obj/
 .history
 .ionide
 
-appsettings.json
-appsettings.Development.json
+Choice21.API.Rest/appsettings.json
+Choice21.API.Rest/appsettings.Development.json
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,dotnetcore

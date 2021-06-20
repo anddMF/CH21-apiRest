@@ -37,6 +37,23 @@ namespace Choice21.API.Rest.Controllers
             }
         }
 
+        // Método vai vazar quando eu colocar GraphQL
+        [HttpGet]
+        [Route("id")]
+        public ActionResult<IEnumerable<ImageData>> GetImagesById(string[] list)
+        {
+            try
+            {
+                var result = svc.GetImagesById(list);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpGet]
         [Route("arcprofile")]
         public ActionResult<IEnumerable<ArcProfile>> GetArcProfiles()

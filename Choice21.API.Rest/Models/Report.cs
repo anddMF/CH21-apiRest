@@ -35,8 +35,8 @@ namespace Choice21.API.Rest.Models
         [JsonProperty("title")]
         public string TITLE { get; set; }
 
-        [JsonProperty("description")]
-        public string DESCRIPTION { get; set; }
+        [JsonProperty("r_description")]
+        public string R_DESCRIPTION { get; set; }
 
         [JsonProperty("r_key")]
         public string R_KEY { get; set; }
@@ -88,5 +88,21 @@ namespace Choice21.API.Rest.Models
 
         [JsonProperty("r8_pic2")]
         public int R8_PIC2 { get; set; }
+
+        // OUTSIDE PROPERTIES
+        [JsonProperty("name")]
+        public string NAME { get; set; }
+
+        [JsonProperty("dt_birth")]
+        public DateTime DT_BIRTH { get; set; }
+
+        [JsonProperty("children")]
+        public int CHILDREN { get; set; }
+
+        [JsonProperty("kid")]
+        public bool KID { get; set; }
+
+        [JsonProperty("email")]
+        public string EMAIL { get; set; }
     }
 }

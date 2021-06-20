@@ -26,6 +26,22 @@ namespace Choice21.API.Rest.Services
             return result;
         }
 
+        public IEnumerable<ImageData> GetImagesById(string[] listIds){
+            string inQuery = "";
+
+            for (int i = 0; i < listIds.Length; i++)
+            {
+                if(i == 0)
+                    inQuery = listIds[i];
+                else
+                    inQuery += ", "+ listIds[i];
+            }
+
+            var result = baseSvc.GetStuff<ImageData>("select * from cho2021_image where ID in ("+ inQuery +")");
+
+            return result;
+        }   
+
         public IEnumerable<ArcProfile> GetArcProfiles()
         {
             //var result = baseSvc.ExecuteProcGet<ArcProfile>("STP_CHO2021_ARCPROFILE_GET", null);

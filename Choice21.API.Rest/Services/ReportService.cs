@@ -69,7 +69,7 @@ namespace Choice21.API.Rest.Services
                 { "@Pdeal", model.DEAL },
                 { "@Pread", model.R_READ },
                 { "@Ptitle", model.TITLE },
-                { "@Pdescription", model.DESCRIPTION },
+                { "@Pdescription", model.R_DESCRIPTION },
                 { "@Pkey", model.R_KEY },
                 { "@Pr1_pic1", model.R1_PIC1 },
                 { "@Pr1_pic2", model.R1_PIC2},

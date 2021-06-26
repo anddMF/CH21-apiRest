@@ -35,5 +35,11 @@ namespace Choice21.API.Rest.Models
         [JsonProperty("id_company")]
         public int ID_COMPANY { get; set; }
 
+        [JsonProperty("profile_name")]
+        public string PROFILE_NAME { get; set; }
+
+        [JsonProperty("room_name")]
+        public string ROOM_NAME { get; set; }
+
     }
 }

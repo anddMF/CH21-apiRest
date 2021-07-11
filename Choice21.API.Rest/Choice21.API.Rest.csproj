@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <OutputType>WinExe</OutputType>
+    <OutputType>exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>

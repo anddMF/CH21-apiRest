@@ -62,7 +62,7 @@ namespace Choice21.API.Rest.Controllers
                 var svc = new ReportService(config);
                 var response = svc.PostReport(model);
                 
-                return response ? Ok() : StatusCode(500);
+                return response ? Ok(response) : StatusCode(500);
             }
             catch (Exception ex)
             {

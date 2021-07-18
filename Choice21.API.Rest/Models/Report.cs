@@ -42,13 +42,13 @@ namespace Choice21.API.Rest.Models
         public string R_KEY { get; set; }
 
         [JsonProperty("r1_pic1")]
-        public int R1_PIC1 { get; set; }
+        public string R1_PIC1 { get; set; }
 
         [JsonProperty("r1_pic2")]
-        public int R1_PIC2 { get; set; }
+        public string R1_PIC2 { get; set; }
 
         [JsonProperty("r2_pic1")]
-        public int R2_PIC1 { get; set; }
+        public string R2_PIC1 { get; set; }
 
         [JsonProperty("r2_pic2")]
         public int R2_PIC2 { get; set; }

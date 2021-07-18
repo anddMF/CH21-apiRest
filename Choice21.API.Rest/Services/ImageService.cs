@@ -21,7 +21,7 @@ namespace Choice21.API.Rest.Services
         public IEnumerable<ImageData> GetImages()
         {
             //var result = baseSvc.ExecuteProcGet<ImageData>("STP_CHO2021_IMAGE_GET", null);
-            var result = baseSvc.GetStuff<ImageData>("select * from cho2021_image");
+            var result = baseSvc.GetStuff<ImageData>("select im.ID, im.ID_COMPANY, im.ID_ARC_PROFILE, im.ID_ROOM_TYPE, im.BASE_IMAGE, im.NAME, im.COLOR_1, im.COLOR_2, im.DT_REGISTER, pr.NAME AS 'PROFILE_NAME', ro.NAME AS 'ROOM_NAME' from cho2021_image im LEFT JOIN cho2021_arc_profile pr on im.ID_ARC_PROFILE = pr.ID LEFT JOIN cho2021_room_type ro on im.ID_ROOM_TYPE = ro.ID");
 
             return result;
         }

@@ -20,8 +20,8 @@ namespace Choice21.API.Rest.Infra.Database
         {
             config = _config;
 
-            //connString = config.GetConnectionString("SQLdb");
-            connString = Environment.GetEnvironmentVariable("Azuredb");
+            connString = config.GetConnectionString("SQLdb");
+            //connString = Environment.GetEnvironmentVariable("Azuredb");
         }
 
         private MySqlConnection GetConnection()

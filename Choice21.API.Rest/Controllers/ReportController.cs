@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Choice21.API.Rest.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class ReportController : Controller
     {
@@ -21,7 +21,10 @@ namespace Choice21.API.Rest.Controllers
             svc = new ReportService(config);
         }
 
+        
         [HttpGet]
+        [Authorize]
+        [Route("guard/Report")]
         public ActionResult<IEnumerable<Report>> GetReports(int id_company, int id_report = 0)
         {
             try
@@ -38,7 +41,7 @@ namespace Choice21.API.Rest.Controllers
         }
 
         [HttpGet]
-        [Route("customer")]
+        [Route("api/[controller]/customer")]
         public ActionResult<IEnumerable<Report>> GetCustomerReport(int id_company, int id_customer)
         {
             try
@@ -55,6 +58,7 @@ namespace Choice21.API.Rest.Controllers
         }
 
         [HttpPost]
+        [Route("api/[controller]")]
         public IActionResult PostReport(Report model)
         {
             try
@@ -71,6 +75,7 @@ namespace Choice21.API.Rest.Controllers
         }
 
         [HttpPut]
+        [Route("api/[controller]")]
         public IActionResult PutReport(Report model)
         {
             try

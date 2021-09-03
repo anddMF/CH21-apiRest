@@ -39,8 +39,18 @@ namespace Choice21.API.Rest.Services
             if (model.ID > 0)
                 query = $"UPDATE develop2020.cho2021_user SET ID_COMPANY = @Pid_company, ID_USER_TYPE = @Pid_user_type, NAME = @Pname, EMAIL = @Pemail, PASSWORD = @Ppassword, DT_BIRTH = @Pdt_birth, DT_REGISTER = @Pdt_register, AVATAR = @Pavatar WHERE ID = @Pid;";
             else
+            {
+                if(model.ID_COMPANY == 0) 
+                    PostCompany(new Company { NAME = model.COMPANY_NAME, CNPJ = model.COMPANY_CNPJ });
+                
                 query = $"INSERT INTO develop2020.cho2021_user (ID_COMPANY, ID_USER_TYPE, NAME, EMAIL, PASSWORD, DT_BIRTH, DT_REGISTER, AVATAR) VALUES (@Pid_company, @Pid_user_type, @Pname, @Pemail, @Ppassword, @Pdt_birth, @Pdt_register, @Pavatar);";
+            }
+            var res = baseSvc.InsertStuff(query, param);
+        }
 
+        public void PostCompany(Company company) {
+            var param = PrepParamPostCompany(company);
+            string query = $"INSERT INTO develop2020.cho2021_company (NAME, CNPJ) VALUES ('{company.NAME}', '{company.CNPJ}');";
             var res = baseSvc.InsertStuff(query, param);
         }
 
@@ -50,6 +60,15 @@ namespace Choice21.API.Rest.Services
             {
                 { "Pid", id },
                 { "Pid_company", id_company }
+            };
+
+            return param;
+        }
+
+        private Dictionary<string, object> PrepParamPostCompany(Company model) {
+            var param = new Dictionary<string, object> {
+                {"@Pid_name", model.NAME},
+                {"@Pid_cnpj", model.CNPJ}
             };
 
             return param;

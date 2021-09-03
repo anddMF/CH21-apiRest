@@ -14,7 +14,6 @@ namespace Choice21.API.Rest.Models
             //var account = true;
             if (!account)
             {
-                // nao logou
                 context.Result = new JsonResult(new { message = "Unauthorized" }) { StatusCode = StatusCodes.Status401Unauthorized };
             }
         }

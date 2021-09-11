@@ -43,9 +43,9 @@ namespace Choice21.API.Rest.Controllers
             try
             {
                 var svc = new UserService(config);
-                svc.PostUser(model);
+                bool res = svc.PostUser(model);
 
-                return Ok();
+                return Ok(res);
             }
             catch (Exception ex)
             {

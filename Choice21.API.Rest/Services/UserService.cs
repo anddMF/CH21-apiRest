@@ -28,7 +28,7 @@ namespace Choice21.API.Rest.Services
             return result;
         }
 
-        public void PostUser(User model)
+        public bool PostUser(User model)
         {
             //var param = PrepParamPost(model);
             //var res = baseSvc.ExecuteProc("STP_CHO2021_USER_INSERT", param);
@@ -46,6 +46,8 @@ namespace Choice21.API.Rest.Services
                 query = $"INSERT INTO develop2020.cho2021_user (ID_COMPANY, ID_USER_TYPE, NAME, EMAIL, PASSWORD, DT_BIRTH, DT_REGISTER, AVATAR) VALUES (@Pid_company, @Pid_user_type, @Pname, @Pemail, @Ppassword, @Pdt_birth, @Pdt_register, @Pavatar);";
             }
             var res = baseSvc.InsertStuff(query, param);
+
+            return res;
         }
 
         public void PostCompany(Company company) {
@@ -79,7 +81,7 @@ namespace Choice21.API.Rest.Services
             var param = new Dictionary<string, object>
             {
                 { "@Pid_company", model.ID_COMPANY },
-                { "@Pid_user_type", model.ID_USER_TYPE},
+                { "@Pid_user_type", 1},
                 { "@Pname", model.NAME},
                 { "@Pemail", model.EMAIL },
                 { "@Ppassword", model.PASSWORD },

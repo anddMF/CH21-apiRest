@@ -37,6 +37,27 @@ namespace Choice21.API.Rest.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("email")]
+        public ActionResult<bool> GetUserEmail(string email)
+        {
+            try
+            {
+                var svc = new UserService(config);
+                var result = svc.GetEmail(email);
+
+                // Ternário está quebrando por conta da versão, subir ela depois
+                if(result)
+                    return Ok();
+                else
+                    return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
         public IActionResult PostUser(User model)
         {

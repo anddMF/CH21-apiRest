@@ -18,6 +18,17 @@ namespace Choice21.API.Rest.Services
             baseSvc = new BaseService(config);
         }
 
+        public bool GetEmail(string email)
+        {
+            string query = $"SELECT * FROM cho2021_user WHERE EMAIL = '{email}'";
+            var result = baseSvc.GetStuff<User>(query);
+
+            if(result.Count() > 0) 
+                return true;
+            
+            return false;
+        }
+
         public IEnumerable<User> GetUser(int id, int id_company = 0)
         {
             //var param = PrepParamGet(id, id_company);
@@ -32,7 +43,6 @@ namespace Choice21.API.Rest.Services
         {
             //var param = PrepParamPost(model);
             //var res = baseSvc.ExecuteProc("STP_CHO2021_USER_INSERT", param);
-
             string query = "";
             var param = PrepParamPost(model);
 
@@ -40,9 +50,9 @@ namespace Choice21.API.Rest.Services
                 query = $"UPDATE develop2020.cho2021_user SET ID_COMPANY = @Pid_company, ID_USER_TYPE = @Pid_user_type, NAME = @Pname, EMAIL = @Pemail, PASSWORD = @Ppassword, DT_BIRTH = @Pdt_birth, DT_REGISTER = @Pdt_register, AVATAR = @Pavatar WHERE ID = @Pid;";
             else
             {
-                if(model.ID_COMPANY == 0) 
+                if (model.ID_COMPANY == 0)
                     PostCompany(new Company { NAME = model.COMPANY_NAME, CNPJ = model.COMPANY_CNPJ });
-                
+
                 query = $"INSERT INTO develop2020.cho2021_user (ID_COMPANY, ID_USER_TYPE, NAME, EMAIL, PASSWORD, DT_BIRTH, DT_REGISTER, AVATAR) VALUES (@Pid_company, @Pid_user_type, @Pname, @Pemail, @Ppassword, @Pdt_birth, @Pdt_register, @Pavatar);";
             }
             var res = baseSvc.InsertStuff(query, param);
@@ -50,7 +60,8 @@ namespace Choice21.API.Rest.Services
             return res;
         }
 
-        public void PostCompany(Company company) {
+        public void PostCompany(Company company)
+        {
             var param = PrepParamPostCompany(company);
             string query = $"INSERT INTO develop2020.cho2021_company (NAME, CNPJ) VALUES ('{company.NAME}', '{company.CNPJ}');";
             var res = baseSvc.InsertStuff(query, param);
@@ -67,7 +78,8 @@ namespace Choice21.API.Rest.Services
             return param;
         }
 
-        private Dictionary<string, object> PrepParamPostCompany(Company model) {
+        private Dictionary<string, object> PrepParamPostCompany(Company model)
+        {
             var param = new Dictionary<string, object> {
                 {"@Pid_name", model.NAME},
                 {"@Pid_cnpj", model.CNPJ}

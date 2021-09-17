@@ -64,6 +64,11 @@ namespace Choice21.API.Rest.Controllers
             try
             {
                 var svc = new UserService(config);
+                bool emailExists = svc.GetEmail(model.EMAIL);
+
+                if (emailExists)
+                    return BadRequest();
+
                 bool res = svc.PostUser(model);
 
                 return Ok(res);

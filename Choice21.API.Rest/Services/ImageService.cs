@@ -50,7 +50,7 @@ namespace Choice21.API.Rest.Services
             return result;
         }
 
-        public void PostImage(ImageData model)
+        public bool PostImage(ImageData model)
         {
             var param = PrepParamPost(model);
             //var res = baseSvc.ExecuteProc("STP_CHO2021_IMAGE_INSERT", param);
@@ -58,6 +58,7 @@ namespace Choice21.API.Rest.Services
             var query = $"INSERT INTO develop2020.cho2021_image (ID_ARC_PROFILE, ID_ROOM_TYPE, BASE_IMAGE, NAME, COLOR_1, COLOR_2, DT_REGISTER) VALUES (@ArcProfile, @RoomType, @BaseImg, @Name, @Color1, @Color2, @DtRegister);";
 
             var res = baseSvc.InsertStuff(query, param);
+            return res;
         }
 
         private Dictionary<string, object> PrepParamPost(ImageData model)

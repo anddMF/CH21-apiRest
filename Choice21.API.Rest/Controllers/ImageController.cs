@@ -75,9 +75,9 @@ namespace Choice21.API.Rest.Controllers
         {
             try
             {
-                svc.PostImage(model);
+                bool res = svc.PostImage(model);
 
-                return Ok();
+                return Ok(res);
             }
             catch (Exception ex)
             {
